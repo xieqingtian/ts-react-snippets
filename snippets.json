@@ -1,0 +1,136 @@
+{
+    "react class component": {
+        "scope": "typescriptreact",
+        "prefix": "tsrcc",
+        "body": [
+            "import React, { PureComponent } from 'react'",
+            "\nimport styles from './index.scss'",
+            "\ntype Prop = {}",
+            "\ntype State = Readonly<{}>",
+            "\nclass ${1:${TM_FILENAME_BASE}} extends PureComponent<Prop, State> {",
+            "\n\treadonly state: State = {}",
+            "\n\trender() {",
+            "\t\treturn (",
+            "\t\t\t<div>",
+            "\n\t\t\t</div>",
+            "\t\t)",
+            "\t}",
+            "\n}",
+            "\nexport default ${1:${TM_FILENAME_BASE}}"
+        ],
+        "description": "初始化一个class组件"
+    },
+    "react function component": {
+        "scope": "typescriptreact",
+        "prefix": "tsrfc",
+        "body": [
+            "import React, { SFC } from 'react'",
+            "\nimport styles from './index.scss'",
+            "\ntype Prop = {}",
+            "\nconst ${1:${TM_FILENAME_BASE}}: SFC<Prop> = props => {",
+            "\treturn (",
+            "\t\t<div>",
+            "\n\t\t</div>",
+            "\t)",
+            "}",
+            "\nexport default ${1:${TM_FILENAME_BASE}}"
+        ],
+        "description": "初始化一个function组件"
+    },
+    "react redux component": {
+        "scope": "typescriptreact",
+        "prefix": "tsrrc",
+        "body": [
+            "import React, { PureComponent } from 'react'",
+            "import { connect } from 'react-redux'",
+            "import { Dispatch, bindActionCreators } from 'redux'",
+            "\nimport { RootAction, RootState } from '@/store'",
+            "\nimport styles from './index.scss'",
+            "\nconst mapStateToProps = (state: RootState) => ({",
+            "\n})",
+            "\nconst mapDispatchToProps = (dispatch: Dispatch<RootAction>) => ({",
+            "\tactions: bindActionCreators({}, dispatch)",
+            "})",
+            "\ntype Prop = Partial<ReturnType<typeof mapStateToProps>> & Partial<ReturnType<typeof mapDispatchToProps>> & {}",
+            "\ntype State = Readonly<{}>",
+            "\nclass ${1:${TM_FILENAME_BASE}} extends PureComponent<Prop, State> {",
+            "\n\treadonly state: State = {}",
+            "\n\trender() {",
+            "\t\treturn (",
+            "\t\t\t<div>",
+            "\n\t\t\t</div>",
+            "\t\t)",
+            "\t}",
+            "\n}",
+            "\nexport default connect(",
+            "\tmapStateToProps,",
+            "\tmapDispatchToProps",
+            ")(${1:${TM_FILENAME_BASE}})"
+        ],
+        "description": "初始化一个react&redux组件"
+    },
+    "store actions": {
+        "scope": "typescript",
+        "prefix": "tssa",
+        "body": [
+            "import { createStandardAction, ActionType } from 'typesafe-actions'",
+            "\nimport { ${TM_DIRECTORY/.*[\\\\|\\/]+(.*)/${1:/capitalize}/}ActionTypes } from './types'",
+            "\nconst actions = {",
+            "\t${1:someAction}: createStandardAction(${TM_DIRECTORY/.*[\\\\|\\/]+(.*)/${1:/capitalize}/}ActionTypes.${2:SOME_TYPE})<void>()",
+            "}",
+            "\ntype Action = ActionType<typeof actions>",
+            "\nexport { Action as ${TM_DIRECTORY/.*[\\\\|\\/]+(.*)/${1:/capitalize}/}Action, actions as ${TM_DIRECTORY/.*[\\\\|\\/]+(.*)/$1/}Actions }"
+        ],
+        "description": "初始化actions"
+    },
+    "store types": {
+        "scope": "typescript",
+        "prefix": "tsst",
+        "body": [
+            "export const enum ${TM_DIRECTORY/.*[\\\\|\\/]+(.*)/${1:/capitalize}/}ActionTypes {",
+            "\t${1:SOME_TYPE} = '@${TM_DIRECTORY/.*[\\\\|\\/]+(.*)/$1/}/${1:SOME_TYPE}',",
+            "}",
+            "\nexport type ${TM_DIRECTORY/.*[\\\\|\\/]+(.*)/${1:/capitalize}/}State = Readonly<{}>"
+        ],
+        "description": "初始化actionTypes"
+    },
+    "store reducer": {
+        "scope": "typescript",
+        "prefix": "tssr",
+        "body": [
+            "import { ${TM_DIRECTORY/.*[\\\\|\\/]+(.*)/${1:/capitalize}/}State, ${TM_DIRECTORY/.*[\\\\|\\/]+(.*)/${1:/capitalize}/}ActionTypes } from './types'",
+            "import { ${TM_DIRECTORY/.*[\\\\|\\/]+(.*)/${1:/capitalize}/}Action } from './actions'",
+            "\nconst initialState: ${TM_DIRECTORY/.*[\\\\|\\/]+(.*)/${1:/capitalize}/}State = {}",
+            "\nconst reducer = (state: ${TM_DIRECTORY/.*[\\\\|\\/]+(.*)/${1:/capitalize}/}State = initialState, action: ${TM_DIRECTORY/.*[\\\\|\\/]+(.*)/${1:/capitalize}/}Action): ${TM_DIRECTORY/.*[\\\\|\\/]+(.*)/${1:/capitalize}/}State => {",
+            "\tswitch (action.type) {",
+            "\t\tcase ${TM_DIRECTORY/.*[\\\\|\\/]+(.*)/${1:/capitalize}/}ActionTypes.${1:SOME_TYPE}:",
+            "\t\t\treturn state",
+            "\t\tdefault:",
+            "\t\t\treturn state",
+            "\t}",
+            "}",
+            "\nexport { reducer as ${TM_DIRECTORY/.*[\\\\|\\/]+(.*)/$1/}Reducer }"
+        ],
+        "description": "初始化reducer"
+    },
+    "store epic": {
+        "scope": "typescript",
+        "prefix": "tsse",
+        "body": [
+            "import { combineEpics, Epic } from 'redux-observable'",
+            "import { isOfType } from 'typesafe-actions'",
+            "import { filter, delay, mapTo } from 'rxjs/operators'",
+            "\nimport { ${TM_DIRECTORY/.*[\\\\|\\/]+(.*)/${1:/capitalize}/}ActionTypes } from './types'",
+            "import { ${TM_DIRECTORY/.*[\\\\|\\/]+(.*)/$1/}Actions } from './actions'",
+            "import { RootAction, RootState } from '../index'",
+            "\nconst ${1:someFlow}: Epic<RootAction, RootAction, RootState> = (action$, state$) =>",
+            "\taction$.pipe(",
+            "\t\tfilter(isOfType(${TM_DIRECTORY/.*[\\\\|\\/]+(.*)/${1:/capitalize}/}ActionTypes.${2:SOME_TYPE})),",
+            "\t\tdelay(1000),",
+            "\t\tmapTo(${TM_DIRECTORY/.*[\\\\|\\/]+(.*)/$1/}Actions.${3:someFunc}())",
+            "\t)",
+            "\nexport default combineEpics(${1:someFlow})"
+        ],
+        "description": "初始化epic"
+    }
+}

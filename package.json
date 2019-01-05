@@ -1,0 +1,33 @@
+{
+    "name": "ts-react-snippets",
+    "description": "自己团队用的",
+    "version": "0.0.2",
+    "displayName": "ts-react-snippets",
+    "publisher": "xieqingtian",
+    "icon": "react.png",
+    "galleryBanner": {
+        "theme": "light"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/xabikos/vscode-react"
+    },
+    "engines": {
+        "vscode": "0.10.x"
+    },
+    "categories": [
+        "Snippets"
+    ],
+    "contributes": {
+        "snippets": [
+            {
+                "language": "typescript",
+                "path": "./snippets.json"
+            },
+            {
+                "language": "typescriptreact",
+                "path": "./snippets.json"
+            }
+        ]
+    }
+}
