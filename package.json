@@ -1,10 +1,10 @@
 {
     "name": "ts-react-snippets",
-    "description": "自己团队用的",
-    "version": "0.0.2",
+    "description": "typescript&react代码片段",
+    "version": "0.0.3",
     "displayName": "ts-react-snippets",
     "publisher": "xieqingtian",
-    "icon": "xieqingtian.jpg",
+    "icon": "images/logo.png",
     "galleryBanner": {
         "theme": "light"
     },
