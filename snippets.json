@@ -1,136 +1,305 @@
 {
+    "import styled from 'styled-components'": {
+        "scope": "javascript,typescript,typescriptreact",
+        "prefix": "isc",
+        "body": "import styled from 'styled-components';",
+        "description": "import styled-components"
+    },
+    "Styled-Component": {
+        "scope": "javascript,typescript,typescriptreact",
+        "prefix": "sc",
+        "body": "const ${1} = styled.${2}`\n  ${3}\n`;",
+        "description": "define a styled component"
+    },
+    "Styled-Component from existing component": {
+        "scope": "javascript,typescript,typescriptreact",
+        "prefix": "scc",
+        "body": "const ${1} = styled(${2})`\n  ${3}\n`;",
+        "description": "extends a styled component"
+    },
+    "Use props inside styled-component": {
+        "scope": "javascript,typescript,typescriptreact",
+        "prefix": "scp",
+        "body": "${props => props.$1};",
+        "description": "Use props inside styled-component"
+    },
+    "import styles from './index.module.scss'": {
+        "scope": "javascript,typescriptreact",
+        "prefix": "icm",
+        "body": "import styles from '${1:./index.module.scss}';",
+        "description": "import a css module"
+    },
+    "Use css modules": {
+        "scope": "javascript,typescriptreact",
+        "prefix": "ss",
+        "body": "className={styles${1}}",
+        "description": "use css module"
+    },
+    "import classNames from 'classnames'": {
+        "scope": "javascript,typescript,typescriptreact",
+        "prefix": "icn",
+        "body": "import classNames from 'classnames';",
+        "description": "import classnames"
+    },
+    "requireToConst": {
+        "scope": "javascript,typescript,typescriptreact",
+        "prefix": "req",
+        "body": "const ${1:packageName} = require('${1:package}');$0",
+        "description": "Require a package to const"
+    },
+    "moduleExports": {
+        "scope": "javascript",
+        "prefix": "mde",
+        "body": "module.exports = {\n\t$0\n};\n",
+        "description": "Module exports from Common JS, node syntax at ES6"
+    },
+    "forEach": {
+        "scope": "javascript,typescript,typescriptreact",
+        "prefix": "fre",
+        "body": "${1:array}.forEach(${2:currentItem} => {\n\t${0}\n});",
+        "description": "Creates a forEach statement in ES6 syntax"
+    },
+    "forOf": {
+        "scope": "javascript,typescript,typescriptreact",
+        "prefix": "fof",
+        "body": "for (const ${1:item} of ${2:object}) {\n\t${0}\n}",
+        "description": "Iterating over property names of iterable objects"
+    },
+    "forIn": {
+        "scope": "javascript,typescript,typescriptreact",
+        "prefix": "fin",
+        "body": "for (const ${1:item} in ${2:object}) {\n\t${0}\n}",
+        "description": "Iterating over property values of iterable objects"
+    },
+    "setInterval": {
+        "scope": "javascript,typescript,typescriptreact",
+        "prefix": "sti",
+        "body": "setInterval(() => {\n\t${2}\n}, ${0:intervalInms});",
+        "description": "Executes the given function at specified intervals in ES6 syntax"
+    },
+    "setTimeOut": {
+        "scope": "javascript,typescript,typescriptreact",
+        "prefix": "sto",
+        "body": "setTimeout(() => {\n\t${2}\n}, ${1:delayInms});",
+        "description": "Executes the given function after the specified delay in ES6 syntax"
+    },
+    "promise": {
+        "scope": "javascript,typescript,typescriptreact",
+        "prefix": "prom",
+        "body": "return new Promise((resolve, reject) => {\n\t${1}\n});",
+        "description": "Creates and returns a new Promise in the standard ES6 syntax"
+    },
+    "thenCatch": {
+        "scope": "javascript,typescript,typescriptreact",
+        "prefix": "thenc",
+        "body": ".then((${1:result}) => {\n\t${2}\n}).catch((${3:err}) => {\n\t${4}\n});",
+        "description": "Add the .then and .catch methods to handle promises"
+    },
+    "consoleError": {
+        "scope": "javascript,typescript,typescriptreact",
+        "prefix": "cer",
+        "body": "console.error(${1:object});",
+        "description": "Displays a message in the console and also includes a stack trace from where the method was called"
+    },
+    "consoleLog": {
+        "scope": "javascript,typescript,typescriptreact",
+        "prefix": "clg",
+        "body": "console.log(${1:object});",
+        "description": "Displays a message in the console"
+    },
+    "consoleWarn": {
+        "scope": "javascript,typescript,typescriptreact",
+        "prefix": "cwa",
+        "body": "console.warn(${1:object});",
+        "description": "Displays a message in the console but also displays a yellow warning icon along with the logged message"
+    },
+    "consoleInfo": {
+        "scope": "javascript,typescript,typescriptreact",
+        "prefix": "cin",
+        "body": "console.info(${1:object});",
+        "description": "Displays a message in the console but also displays a blue information icon along with the logged message"
+    },
+    "consoleTime": {
+        "scope": "javascript,typescript,typescriptreact",
+        "prefix": "cti",
+        "body": "console.time(${1:object});",
+        "description": "Sets starting point for execution time measurement"
+    },
+    "consoleTimeEnd": {
+        "scope": "javascript,typescript,typescriptreact",
+        "prefix": "cte",
+        "body": "console.timeEnd(${1:object});",
+        "description": "Sets end point for execution time measurement"
+    },
+    "useState": {
+        "scope": "javascript,typescript,typescriptreact",
+        "prefix": "ust",
+        "body": "const [${1}, set${1/(.*)/${1:/capitalize}/}] = useState($2);$0",
+        "description": "React useState() hook"
+    },
+    "useEffect": {
+        "scope": "javascript,typescript,typescriptreact",
+        "prefix": "uef",
+        "body": ["useEffect(() => {", "\t${1}", "});"],
+        "description": "React useEffect() hook"
+    },
+    "useRef": {
+        "scope": "javascript,typescript,typescriptreact",
+        "prefix": "urf",
+        "body": ["const $1 = useRef($2);$0"],
+        "description": "React useRef() hook"
+    },
+    "selector": {
+        "scope": "typescript,typescriptreact",
+        "prefix": "sl",
+        "body": ["export const select${2} = (state: RootState) => state${1}"]
+    },
+    "useSelector": {
+        "scope": "typescript,typescriptreact",
+        "prefix": "usl",
+        "body": ["const $1 = useSelector((state: RootState) => state.$1);"]
+    },
+    "useDispatchFunction": {
+        "scope": "javascript,typescript,typescriptreact",
+        "prefix": "udp",
+        "body": ["const dispatch = useDispatch();"]
+    },
     "react class component": {
         "scope": "typescriptreact",
-        "prefix": "tsrcc",
+        "prefix": "rcc",
         "body": [
-            "import React, { PureComponent } from 'react'",
-            "\nimport styles from './index.scss'",
-            "\ntype Prop = {}",
-            "\ntype State = Readonly<{}>",
-            "\nclass ${1:${TM_FILENAME_BASE}} extends PureComponent<Prop, State> {",
+            "import React, { PureComponent } from 'react';",
+            "\ntype Props = {};",
+            "\ntype State = Readonly<{}>;",
+            "\nclass ${1:${TM_FILENAME_BASE}} extends PureComponent<Props, State> {",
             "\n\treadonly state: State = {}",
             "\n\trender() {",
             "\t\treturn (",
             "\t\t\t<div>",
-            "\n\t\t\t</div>",
+            "\t\t\t\tI am ${1:${TM_FILENAME_BASE}}",
+            "\t\t\t</div>",
             "\t\t)",
             "\t}",
             "\n}",
-            "\nexport default ${1:${TM_FILENAME_BASE}}"
+            "\nexport default ${1:${TM_FILENAME_BASE}};"
         ],
-        "description": "初始化一个class组件"
+        "description": "define a class component"
     },
     "react function component": {
         "scope": "typescriptreact",
-        "prefix": "tsrfc",
+        "prefix": "rfc",
         "body": [
-            "import React, { SFC } from 'react'",
-            "\nimport styles from './index.scss'",
-            "\ntype Prop = {}",
-            "\nconst ${1:${TM_FILENAME_BASE}}: SFC<Prop> = props => {",
+            "import React, { FC } from 'react';",
+            "\ntype Props = {};",
+            "\nconst ${1:${TM_FILENAME_BASE}}: FC<Props> = props => {",
             "\treturn (",
             "\t\t<div>",
-            "\n\t\t</div>",
+            "\t\t\tI am ${1:${TM_FILENAME_BASE}}",
+            "\t\t</div>",
             "\t)",
             "}",
-            "\nexport default ${1:${TM_FILENAME_BASE}}"
+            "\nexport default ${1:${TM_FILENAME_BASE}};"
         ],
-        "description": "初始化一个function组件"
+        "description": "define a function component"
     },
-    "react redux component": {
+    "componentWillMount": {
+        "scope": "javascript,typescriptreact",
+        "prefix": "cwm",
+        "body": ["componentWillMount() {", "\t$0", "}", ""],
+        "description": "DEPRECATED!!!. Invoked once, both on the client and server, immediately before the initial rendering occurs"
+    },
+    "componentDidMount": {
+        "scope": "javascript,typescriptreact",
+        "prefix": "cdm",
+        "body": ["componentDidMount() {", "\t$0", "}", ""],
+        "description": "Invoked once, only on the client (not on the server), immediately after the initial rendering occurs."
+    },
+    "componentWillReceiveProps": {
         "scope": "typescriptreact",
-        "prefix": "tsrrc",
-        "body": [
-            "import React, { PureComponent } from 'react'",
-            "import { connect } from 'react-redux'",
-            "import { Dispatch, bindActionCreators } from 'redux'",
-            "\nimport { RootAction, RootState } from '@/store'",
-            "\nimport styles from './index.scss'",
-            "\nconst mapStateToProps = (state: RootState) => ({",
-            "\n})",
-            "\nconst mapDispatchToProps = (dispatch: Dispatch<RootAction>) => ({",
-            "\tactions: bindActionCreators({}, dispatch)",
-            "})",
-            "\ntype Prop = Partial<ReturnType<typeof mapStateToProps>> & Partial<ReturnType<typeof mapDispatchToProps>> & {}",
-            "\ntype State = Readonly<{}>",
-            "\nclass ${1:${TM_FILENAME_BASE}} extends PureComponent<Prop, State> {",
-            "\n\treadonly state: State = {}",
-            "\n\trender() {",
-            "\t\treturn (",
-            "\t\t\t<div>",
-            "\n\t\t\t</div>",
-            "\t\t)",
-            "\t}",
-            "\n}",
-            "\nexport default connect(",
-            "\tmapStateToProps,",
-            "\tmapDispatchToProps",
-            ")(${1:${TM_FILENAME_BASE}})"
-        ],
-        "description": "初始化一个react&redux组件"
+        "prefix": "cwr",
+        "body": ["componentWillReceiveProps(nextProps: Props) {", "\t$0", "}", ""],
+        "description": "DEPRECATED!!!. Invoked when a component is receiving new props. This method is not called for the initial render."
     },
-    "store actions": {
-        "scope": "typescript",
-        "prefix": "tssa",
-        "body": [
-            "import { createStandardAction, ActionType } from 'typesafe-actions'",
-            "\nimport { ${TM_DIRECTORY/.*[\\\\|\\/]+(.*)/${1:/capitalize}/}ActionTypes } from './types'",
-            "\nconst actions = {",
-            "\t${1:someAction}: createStandardAction(${TM_DIRECTORY/.*[\\\\|\\/]+(.*)/${1:/capitalize}/}ActionTypes.${2:SOME_TYPE})<void>()",
-            "}",
-            "\ntype Action = ActionType<typeof actions>",
-            "\nexport { Action as ${TM_DIRECTORY/.*[\\\\|\\/]+(.*)/${1:/capitalize}/}Action, actions as ${TM_DIRECTORY/.*[\\\\|\\/]+(.*)/$1/}Actions }"
-        ],
-        "description": "初始化actions"
+    "shouldComponentUpdate": {
+        "scope": "typescriptreact",
+        "prefix": "scu",
+        "body": ["shouldComponentUpdate(nextProps: Props, nextState: State) {", "\t$0", "}", ""],
+        "description": "Invoked before rendering when new props or state are being received. "
     },
-    "store types": {
-        "scope": "typescript",
-        "prefix": "tsst",
-        "body": [
-            "export const enum ${TM_DIRECTORY/.*[\\\\|\\/]+(.*)/${1:/capitalize}/}ActionTypes {",
-            "\t${1:SOME_TYPE} = '@${TM_DIRECTORY/.*[\\\\|\\/]+(.*)/$1/}/${1:SOME_TYPE}',",
-            "}",
-            "\nexport type ${TM_DIRECTORY/.*[\\\\|\\/]+(.*)/${1:/capitalize}/}State = Readonly<{}>"
-        ],
-        "description": "初始化actionTypes"
+    "componentWillUpdate": {
+        "scope": "typescriptreact",
+        "prefix": "cwup",
+        "body": ["componentWillUpdate(nextProps: Props, nextState: State) {", "\t$0", "}", ""],
+        "description": "DEPRECATED!!!. Invoked immediately before rendering when new props or state are being received."
     },
-    "store reducer": {
-        "scope": "typescript",
-        "prefix": "tssr",
-        "body": [
-            "import { ${TM_DIRECTORY/.*[\\\\|\\/]+(.*)/${1:/capitalize}/}State, ${TM_DIRECTORY/.*[\\\\|\\/]+(.*)/${1:/capitalize}/}ActionTypes } from './types'",
-            "import { ${TM_DIRECTORY/.*[\\\\|\\/]+(.*)/${1:/capitalize}/}Action } from './actions'",
-            "\nconst initialState: ${TM_DIRECTORY/.*[\\\\|\\/]+(.*)/${1:/capitalize}/}State = {}",
-            "\nconst reducer = (state: ${TM_DIRECTORY/.*[\\\\|\\/]+(.*)/${1:/capitalize}/}State = initialState, action: ${TM_DIRECTORY/.*[\\\\|\\/]+(.*)/${1:/capitalize}/}Action): ${TM_DIRECTORY/.*[\\\\|\\/]+(.*)/${1:/capitalize}/}State => {",
-            "\tswitch (action.type) {",
-            "\t\tcase ${TM_DIRECTORY/.*[\\\\|\\/]+(.*)/${1:/capitalize}/}ActionTypes.${1:SOME_TYPE}:",
-            "\t\t\treturn state",
-            "\t\tdefault:",
-            "\t\t\treturn state",
-            "\t}",
-            "}",
-            "\nexport { reducer as ${TM_DIRECTORY/.*[\\\\|\\/]+(.*)/$1/}Reducer }"
-        ],
-        "description": "初始化reducer"
+    "componentDidUpdate": {
+        "scope": "typescriptreact",
+        "prefix": "cdup",
+        "body": ["componentDidUpdate(prevProps: Props, prevState: State) {", "\t$0", "}", ""],
+        "description": "Invoked immediately after the component's updates are flushed to the DOM."
     },
-    "store epic": {
+    "componentWillUnmount": {
+        "scope": "javascript,typescriptreact",
+        "prefix": "cwun",
+        "body": ["componentWillUnmount() {", "\t$0", "}", ""],
+        "description": "Invoked immediately before a component is unmounted from the DOM."
+    },
+    "componentSetStateObject": {
+        "scope": "javascript,typescriptreact",
+        "prefix": "sst",
+        "body": "this.setState({$0})",
+        "description": "Performs a shallow merge of nextState into current state"
+    },
+    "componentSetStateFunc": {
+        "scope": "javascript,typescriptreact",
+        "prefix": "ssf",
+        "body": ["this.setState((state, props) => { return { $0 }})", ""],
+        "description": "Performs a shallow merge of nextState into current state"
+    },
+    "createSlice": {
         "scope": "typescript",
-        "prefix": "tsse",
+        "prefix": "slice",
         "body": [
-            "import { combineEpics, Epic } from 'redux-observable'",
-            "import { isOfType } from 'typesafe-actions'",
-            "import { filter, delay, mapTo } from 'rxjs/operators'",
-            "\nimport { ${TM_DIRECTORY/.*[\\\\|\\/]+(.*)/${1:/capitalize}/}ActionTypes } from './types'",
-            "import { ${TM_DIRECTORY/.*[\\\\|\\/]+(.*)/$1/}Actions } from './actions'",
-            "import { RootAction, RootState } from '../index'",
-            "\nconst ${1:someFlow}: Epic<RootAction, RootAction, RootState> = (action$, state$) =>",
-            "\taction$.pipe(",
-            "\t\tfilter(isOfType(${TM_DIRECTORY/.*[\\\\|\\/]+(.*)/${1:/capitalize}/}ActionTypes.${2:SOME_TYPE})),",
-            "\t\tdelay(1000),",
-            "\t\tmapTo(${TM_DIRECTORY/.*[\\\\|\\/]+(.*)/$1/}Actions.${3:someFunc}())",
-            "\t)",
-            "\nexport default combineEpics(${1:someFlow})"
+            "import { createSlice, PayloadAction, createAsyncThunk } from '@reduxjs/toolkit';",
+            "\nimport { RootState } from './rootReducer';",
+            "\nexport const initialState = {",
+            "\tvalue: 0,",
+            "};",
+            "\nexport const changeCountAsync = createAsyncThunk(",
+            "\t'${1:counter}/changeCountAsync',",
+            "\tasync (count: number) => {",
+            "\t\tawait new Promise((resolve) => {",
+            "\t\t\tsetTimeout(resolve, 3000);",
+            "\t\t});",
+            "\t\treturn count;",
+            "\t},",
+            ");",
+            "\nconst ${1:counter} = createSlice({",
+            "\tname: '${1:counter}',",
+            "\tinitialState,",
+            "\treducers: {",
+            "\t\tchangeCount(state, action: PayloadAction<number>) {",
+            "\t\t\tswitch (true) {",
+            "\t\t\t\tcase action.payload > 0:",
+            "\t\t\t\t\tstate.value++;",
+            "\t\t\t\t\tbreak;",
+            "\t\t\t\tcase action.payload < 0:",
+            "\t\t\t\t\tstate.value--;",
+            "\t\t\t\t\tbreak;",
+            "\t\t\t\tdefault:",
+            "\t\t\t}",
+            "\t\t},",
+            "\t},",
+            "\textraReducers: (builder) => {",
+            "\t\tbuilder.addCase(changeCountAsync.fulfilled, (state, action) => {",
+            "\t\t\tstate.value += action.payload;",
+            "\t\t});",
+            "\t},",
+            "});",
+            "\nexport const { changeCount } = ${1:counter}.actions;",
+            "export const selectCount = (state: RootState) => state.${1:counter}.value;",
+            "export default ${1:counter}.reducer;"
         ],
-        "description": "初始化epic"
+        "description": "Create a slice by @reduxjs/toolkit"
     }
 }

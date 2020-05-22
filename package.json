@@ -1,7 +1,7 @@
 {
     "name": "ts-react-snippets",
     "description": "typescript&react代码片段",
-    "version": "0.0.3",
+    "version": "0.0.4",
     "displayName": "ts-react-snippets",
     "publisher": "xieqingtian",
     "icon": "images/logo.png",
@@ -27,6 +27,10 @@
             {
                 "language": "typescriptreact",
                 "path": "./snippets.json"
+            },
+            {
+                "language": "javascript",
+                "path": "./snippets.json" 
             }
         ]
     }
