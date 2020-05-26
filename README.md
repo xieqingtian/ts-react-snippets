@@ -1,27 +1,33 @@
-# typescript&react 代码片段
+# VS Code React Snippets
 
-暂时不考虑片段的通用性，先偏向自己团队的风格，后续再更新
+This extension contains code snippets for React with Typescript and Generate React Component.
 
-## 安装
+# Code generation
 
-扩展面板搜索 ts-react-snippets 进行安装
+## Usage
 
-## 片段生效文件类型
+![usage](images/generate.jpg)
+
+## Configuration
+
+![usage](images/configuration.jpg)
+
+# Snippets
+
+## Supported extensions
 
 -   TypeScript (.ts)
 -   TypeScript React (.tsx)
 
-## Styles
-
-| 指令 | 内容                              |
-| ---- | --------------------------------- |
-| isc  | import styled-components          |
-| sc   | define a styled component         |
-| scc  | extends a styled component        |
-| scp  | Use props inside styled-component |
-| icm  | import a css module               |
-| ss   | use css module                    |
-| icn  | import classnames                 |
+| Trigger | Content                           |
+| ------- | --------------------------------- |
+| isc     | import styled-components          |
+| sc      | define a styled component         |
+| scc     | extends a styled component        |
+| scp     | Use props inside styled-component |
+| icm     | import a css module               |
+| ss      | use css module                    |
+| icn     | import classnames                 |
 
 ### `isc`
 
@@ -69,28 +75,26 @@ className = { styles };
 import classNames from 'classnames';
 ```
 
-## React
-
-| 指令  | 内容                               |
-| ----- | ---------------------------------- |
-| ust   | React useState() hook              |
-| uef   | React useEffect() hook             |
-| urf   | React useRef() hook                |
-| sl    | define a selector                  |
-| usl   | use selector                       |
-| udp   | useDispatch                        |
-| rcc   | define a class component           |
-| rfc   | define a function component        |
-| cwm   | componentWillMount                 |
-| cdm   | componentDidMount                  |
-| cwr   | componentWillReceiveProps          |
-| scu   | shouldComponentUpdate              |
-| cwup  | componentWillUpdate                |
-| cdup  | componentDidUpdate                 |
-| cwun  | componentWillUnmount               |
-| sst   | setState use object                |
-| ssf   | setState use function              |
-| slice | Create a slice by @reduxjs/toolkit |
+| Trigger | Content                            |
+| ------- | ---------------------------------- |
+| ust     | React useState() hook              |
+| uef     | React useEffect() hook             |
+| urf     | React useRef() hook                |
+| sl      | define a selector                  |
+| usl     | use selector                       |
+| udp     | useDispatch                        |
+| rcc     | define a class component           |
+| rfc     | define a function component        |
+| cwm     | componentWillMount                 |
+| cdm     | componentDidMount                  |
+| cwr     | componentWillReceiveProps          |
+| scu     | shouldComponentUpdate              |
+| cwup    | componentWillUpdate                |
+| cdup    | componentDidUpdate                 |
+| cwun    | componentWillUnmount               |
+| sst     | setState use object                |
+| ssf     | setState use function              |
+| slice   | Create a slice by @reduxjs/toolkit |
 
 ### `ust`
 
@@ -237,15 +241,12 @@ export const initialState = {
     value: 0,
 };
 
-export const changeCountAsync = createAsyncThunk(
-    'counter/changeCountAsync',
-    async (count: number) => {
-        await new Promise((resolve) => {
-            setTimeout(resolve, 3000);
-        });
-        return count;
-    },
-);
+export const changeCountAsync = createAsyncThunk('counter/changeCountAsync', async (count: number) => {
+    await new Promise((resolve) => {
+        setTimeout(resolve, 3000);
+    });
+    return count;
+});
 
 const counter = createSlice({
     name: 'counter',
@@ -275,25 +276,20 @@ export const selectCount = (state: RootState) => state.counter.value;
 export default counter.reducer;
 ```
 
-## Others
-
-| 指令  | 内容                                                         |
-| ----- | ------------------------------------------------------------ |
-| req   | Require a package to const                                   |
-| mde   | Module exports from Common JS, node syntax at ES6            |
-| fre   | Creates a forEach statement in ES6 syntax                    |
-| fof   | Iterating over property names of iterable objects            |
-| fin   | Iterating over property values of iterable objects           |
-| sti   | setInterval                                                  |
-| sto   | setTimeout                                                   |
-| prom  | Creates and returns a new Promise in the standard ES6 syntax |
-| thenc | Add the .then and .catch methods to handle promises          |
-| cer   | console.error()                                              |
-| clg   | console.log()                                                |
-| cwa   | console.warn()                                               |
-| cin   | console.info()                                               |
-| cti   | console.time()                                               |
-| cte   | console.timeEnd()                                            |
+| Trigger | Content                                                      |
+| ------- | ------------------------------------------------------------ |
+| req     | Require a package to const                                   |
+| mde     | Module exports from Common JS, node syntax at ES6            |
+| sti     | setInterval                                                  |
+| sto     | setTimeout                                                   |
+| prom    | Creates and returns a new Promise in the standard ES6 syntax |
+| thenc   | Add the .then and .catch methods to handle promises          |
+| cer     | console.error()                                              |
+| clg     | console.log()                                                |
+| cwa     | console.warn()                                               |
+| cin     | console.info()                                               |
+| cti     | console.time()                                               |
+| cte     | console.timeEnd()                                            |
 
 ### `req`
 
@@ -307,28 +303,6 @@ const packageName = require('packageName');
 module.exports = {
     $1,
 };
-```
-
-### `fre`
-
-```javascript
-${$1:array}.forEach(currentItem => {
-    $2
-});
-```
-
-### `fof`
-
-```javascript
-for (const item of object) {
-}
-```
-
-### `fin`
-
-```javascript
-for (const item in object) {
-}
 ```
 
 ### `sti`

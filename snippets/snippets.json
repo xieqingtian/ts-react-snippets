@@ -53,24 +53,6 @@
         "body": "module.exports = {\n\t$0\n};\n",
         "description": "Module exports from Common JS, node syntax at ES6"
     },
-    "forEach": {
-        "scope": "javascript,typescript,typescriptreact",
-        "prefix": "fre",
-        "body": "${1:array}.forEach(${2:currentItem} => {\n\t${0}\n});",
-        "description": "Creates a forEach statement in ES6 syntax"
-    },
-    "forOf": {
-        "scope": "javascript,typescript,typescriptreact",
-        "prefix": "fof",
-        "body": "for (const ${1:item} of ${2:object}) {\n\t${0}\n}",
-        "description": "Iterating over property names of iterable objects"
-    },
-    "forIn": {
-        "scope": "javascript,typescript,typescriptreact",
-        "prefix": "fin",
-        "body": "for (const ${1:item} in ${2:object}) {\n\t${0}\n}",
-        "description": "Iterating over property values of iterable objects"
-    },
     "setInterval": {
         "scope": "javascript,typescript,typescriptreact",
         "prefix": "sti",
@@ -172,7 +154,7 @@
             "\ntype Props = {};",
             "\ntype State = Readonly<{}>;",
             "\nclass ${1:${TM_FILENAME_BASE}} extends PureComponent<Props, State> {",
-            "\n\treadonly state: State = {}",
+            "\treadonly state: State = {}",
             "\n\trender() {",
             "\t\treturn (",
             "\t\t\t<div>",
@@ -191,7 +173,7 @@
         "body": [
             "import React, { FC } from 'react';",
             "\ntype Props = {};",
-            "\nconst ${1:${TM_FILENAME_BASE}}: FC<Props> = props => {",
+            "\nconst ${1:${TM_FILENAME_BASE}}: FC<Props> = (props) => {",
             "\treturn (",
             "\t\t<div>",
             "\t\t\tI am ${1:${TM_FILENAME_BASE}}",

@@ -1,37 +1,131 @@
 {
     "name": "ts-react-snippets",
-    "description": "typescript&react代码片段",
-    "version": "0.0.4",
+    "description": "react snippets with typescript and generate react component",
+    "version": "0.0.6",
     "displayName": "ts-react-snippets",
     "publisher": "xieqingtian",
     "icon": "images/logo.png",
     "galleryBanner": {
         "theme": "light"
     },
+    "license": "MIT",
     "repository": {
         "type": "git",
         "url": "https://github.com/xieqingtian/ts-react-snippets"
     },
     "engines": {
-        "vscode": "0.10.x"
+        "vscode": "1.45.1"
     },
     "categories": [
-        "Snippets"
+        "Snippets",
+        "Other"
     ],
+    "activationEvents": [
+        "*"
+    ],
+    "main": "./out/extension.js",
     "contributes": {
+        "commands": [
+            {
+                "command": "extension.generateClassComponentWithStyled",
+                "title": "Generate Class Component with Styled"
+            },
+            {
+                "command": "extension.generateFunctionComponentWithStyled",
+                "title": "Generate Function Component with Styled"
+            },
+            {
+                "command": "extension.generateClassComponentWithCssModules",
+                "title": "Generate Class Component with CSS Modules"
+            },
+            {
+                "command": "extension.generateFunctionComponentWithCssModules",
+                "title": "Generate Function Component with CSS Modules"
+            },
+            {
+                "command": "extension.generateClassComponent",
+                "title": "Generate Class Component"
+            },
+            {
+                "command": "extension.generateFunctionComponent",
+                "title": "Generate Function Component"
+            }
+        ],
+        "menus": {
+            "explorer/context": [
+                {
+                    "command": "extension.generateClassComponentWithStyled",
+                    "group": "react component",
+                    "when": "explorerResourceIsFolder"
+                },
+                {
+                    "command": "extension.generateFunctionComponentWithStyled",
+                    "group": "react component",
+                    "when": "explorerResourceIsFolder"
+                },
+                {
+                    "command": "extension.generateClassComponentWithCssModules",
+                    "group": "react component",
+                    "when": "explorerResourceIsFolder"
+                },
+                {
+                    "command": "extension.generateFunctionComponentWithCssModules",
+                    "group": "react component",
+                    "when": "explorerResourceIsFolder"
+                },
+                {
+                    "command": "extension.generateClassComponent",
+                    "group": "react component",
+                    "when": "explorerResourceIsFolder"
+                },
+                {
+                    "command": "extension.generateFunctionComponent",
+                    "group": "react component",
+                    "when": "explorerResourceIsFolder"
+                }
+            ]
+        },
+        "configuration": {
+            "title": "Generate React Component",
+            "properties": {
+                "Style File Type": {
+                    "type": "string",
+                    "enum": [
+                        "scss",
+                        "less",
+                        "css"
+                    ],
+                    "default": "scss",
+                    "description": "configure the extension of the generated style file"
+                }
+            }
+        },
         "snippets": [
             {
                 "language": "typescript",
-                "path": "./snippets.json"
+                "path": "snippets/snippets.json"
             },
             {
                 "language": "typescriptreact",
-                "path": "./snippets.json"
+                "path": "snippets/snippets.json"
             },
             {
                 "language": "javascript",
-                "path": "./snippets.json" 
+                "path": "snippets/snippets.json"
             }
         ]
+    },
+    "devDependencies": {
+        "@types/node": "^14.0.5",
+        "prettier": "^2.0.5",
+        "tslint": "^6.1.2",
+        "typescript": "^3.9.3",
+        "@types/vscode": "^1.45.1"
+    },
+    "scripts": {
+        "vscode:prepublish": "yarn run compile",
+        "compile": "tsc -p ./",
+        "watch": "tsc -watch -p ./",
+        "pretest": "yarn run compile"
     }
 }

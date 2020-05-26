@@ -1,0 +1,6 @@
+# .prettierrc
+printWidth: 150
+semi: true
+tabWidth: 4
+singleQuote: true
+endOfLine: lf
