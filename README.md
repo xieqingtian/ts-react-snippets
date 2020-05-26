@@ -6,11 +6,11 @@ This extension contains code snippets for React with Typescript and Generate Rea
 
 ## Usage
 
-![usage](images/generate.jpg)
+![usage](https://github.com/xieqingtian/ts-react-snippets/blob/master/images/generate.jpg)
 
 ## Configuration
 
-![usage](images/configuration.jpg)
+![usage](https://github.com/xieqingtian/ts-react-snippets/blob/master/images/configuration.jpg)
 
 # Snippets
 
