@@ -1,7 +1,7 @@
 {
     "name": "ts-react-snippets",
     "description": "react snippets with typescript and generate react component",
-    "version": "0.0.6",
+    "version": "0.0.7",
     "displayName": "ts-react-snippets",
     "publisher": "xieqingtian",
     "icon": "images/logo.png",
