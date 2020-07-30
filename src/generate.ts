@@ -31,7 +31,6 @@ const getFormatedName = (str: string) =>
     str
         .split(' ')
         .join('')
-        .toLowerCase()
         .replace(/( |^)[a-z]/g, (L) => L.toUpperCase());
 
 const createFile = (filePath: string, content: string) =>
