@@ -60,7 +60,7 @@ ${props => props.$1};
 ### `icm`
 
 ```typescript
-import styles from './index.module.scss';
+import styles from './index.less';
 ```
 
 ### `ss`

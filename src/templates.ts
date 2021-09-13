@@ -11,7 +11,7 @@ const getImportStylesStatement = (stylesType: StylesType) => {
         case 'styled':
             return `\nimport { Container } from './styles';`;
         case 'cssModules':
-            return `\nimport styles from './index.module.${getStyleFileExt()}';`;
+            return `\nimport styles from './index.${getStyleFileExt()}';`;
         default:
             return '';
     }
@@ -22,12 +22,12 @@ export const reactClassComponent = (
     stylesType: StylesType
 ) => `import React, { PureComponent } from 'react';${getImportStylesStatement(stylesType)}
 
-type Props = {};
+type ${componentName}Props = {};
 
-type State = Readonly<{}>;
+type ${componentName}State = Readonly<{}>;
 
-class ${componentName} extends PureComponent<Props, State> {
-    readonly state: State = {}
+class ${componentName} extends PureComponent<${componentName}Props, ${componentName}State> {
+    readonly state: ${componentName}State = {}
 
     render() {
         return (
@@ -47,9 +47,9 @@ export const reactFunctionComponent = (
     stylesType: StylesType
 ) => `import React, { FC } from 'react';${getImportStylesStatement(stylesType)}
 
-type Props = {};
+type ${componentName}Props = {};
 
-const ${componentName}: FC<Props> = (props) => {
+const ${componentName}: FC<${componentName}Props> = (props) => {
     return (
         <div>
             I am ${componentName}

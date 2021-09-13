@@ -1,6 +1,7 @@
 import * as vscode from 'vscode';
 import * as fs from 'fs';
 import * as path from 'path';
+import { pascalCase } from 'pascal-case';
 
 import { reactClassComponent, reactFunctionComponent, StylesType, styledComponent, getStyleFileExt } from './templates';
 
@@ -27,12 +28,6 @@ const getFormatedCode = (code: string) => {
     return code;
 };
 
-const getFormatedName = (str: string) =>
-    str
-        .split(' ')
-        .join('')
-        .replace(/( |^)[a-z]/g, (L) => L.toUpperCase());
-
 const createFile = (filePath: string, content: string) =>
     new Promise((resolve, reject) => {
         if (!fs.existsSync(filePath)) {
@@ -40,7 +35,7 @@ const createFile = (filePath: string, content: string) =>
                 if (err) {
                     reject(err.message);
                 } else {
-                    resolve();
+                    resolve(1);
                 }
             });
         } else {
@@ -49,7 +44,7 @@ const createFile = (filePath: string, content: string) =>
     });
 
 const openFile = (filePath: string) => {
-    vscode.window.showInformationMessage('component create successful');
+    vscode.window.showInformationMessage('Component create successful');
     setTimeout(() => {
         vscode.workspace.openTextDocument(filePath).then((editor) => {
             if (!editor) {
@@ -63,7 +58,7 @@ const openFile = (filePath: string) => {
 export const generate = (stylesType: StylesType, conponentType: 'class' | 'function') => async (selectedLocation: any) => {
     if (!selectedLocation) return;
 
-    const componentName = getFormatedName(
+    const componentName = pascalCase(
         (await vscode.window.showInputBox({
             placeHolder: 'Enter the component name:',
             ignoreFocusOut: true,
@@ -77,7 +72,7 @@ export const generate = (stylesType: StylesType, conponentType: 'class' | 'funct
     const isClassComponent = conponentType === 'class';
     const componentCode = getFormatedCode((isClassComponent ? reactClassComponent : reactFunctionComponent)(componentName, stylesType));
     const stylesCode = isStyled ? getFormatedCode(styledComponent()) : '';
-    const stylesPath = path.join(selectedLocation.fsPath, componentName, isStyled ? 'styles.ts' : `index.module.${getStyleFileExt()}`);
+    const stylesPath = path.join(selectedLocation.fsPath, componentName, isStyled ? 'styles.ts' : `index.${getStyleFileExt()}`);
     const componentPath = isSingle
         ? path.join(selectedLocation.fsPath, `${componentName}.tsx`)
         : path.join(selectedLocation.fsPath, componentName, 'index.tsx');
@@ -87,7 +82,7 @@ export const generate = (stylesType: StylesType, conponentType: 'class' | 'funct
             await createFile(componentPath, componentCode);
             openFile(componentPath);
         } catch (error) {
-            vscode.window.showErrorMessage(error);
+            vscode.window.showErrorMessage((error as Error).message);
         }
         return;
     }
@@ -99,6 +94,6 @@ export const generate = (stylesType: StylesType, conponentType: 'class' | 'funct
 
         openFile(componentPath);
     } catch (error) {
-        vscode.window.showErrorMessage(error.message || error);
+        vscode.window.showErrorMessage((error as Error).message);
     }
 };
