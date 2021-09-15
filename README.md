@@ -95,6 +95,7 @@ import classNames from 'classnames';
 | sst     | setState use object                |
 | ssf     | setState use function              |
 | slice   | Create a slice by @reduxjs/toolkit |
+| mobx    | Create a Mobx Store                |
 
 ### `ust`
 
