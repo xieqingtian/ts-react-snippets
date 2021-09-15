@@ -139,12 +139,12 @@ const dispatch = useDispatch();
 ```tsx
 import React, { PureComponent } from 'react';
 
-type Props = {};
+type DemoProps = {};
 
-type State = Readonly<{}>;
+type DemoState = Readonly<{}>;
 
-class Demo extends PureComponent<Props, State> {
-    readonly state: State = {};
+class Demo extends PureComponent<DemoProps, DemoState> {
+    readonly state: DemoState = {};
 
     render() {
         return <div>I am Demo</div>;
@@ -159,9 +159,9 @@ export default Demo;
 ```tsx
 import React, { FC } from 'react';
 
-type Props = {};
+type DemoProps = {};
 
-const Demo: FC<Props> = (props) => {
+const Demo: FC<DemoProps> = (props) => {
     return <div>I am Demo</div>;
 };
 
@@ -274,6 +274,30 @@ const counter = createSlice({
 export const { changeCount } = counter.actions;
 export const selectCount = (state: RootState) => state.counter.value;
 export default counter.reducer;
+```
+
+### `mobx`
+
+```typescript
+import { makeAutoObservable } from 'mobx';
+
+class Counter {
+    constructor() {
+        makeAutoObservable(this);
+    }
+
+    count = 1;
+
+    increment() {
+        this.count += 1;
+    }
+
+    decrement() {
+        this.count -= 1;
+    }
+}
+
+export default Counter;
 ```
 
 | Trigger | Content                                                      |
